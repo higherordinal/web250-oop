@@ -7,21 +7,26 @@ class Bird {
     public $food;
     public $nesting = "tree";
     public $conservation;
-    public $song = "chirp";
     
-    // Protected property, accessible only within the class and its subclasses
+    // Protected and static properties
     protected $flying = "yes";
-    
-    // Static properties
+    protected static $song = "chirp"; // Static property for the generic bird song
+
+    // Static properties for instance counting
     public static $instanceCount = 0;
     public static $eggNum = 0; // Default egg number for birds
 
-    // Static method to create a new instance of Bird
+    // Static method to create a new instance of Bird using late static binding
     public static function create() {
         $className = get_called_class(); // Retrieve the name of the calling class
         $obj = new $className; // Create a new instance of the calling class
         self::$instanceCount++; // Increment the instance count
         return $obj; // Return the created instance
+    }
+
+    // Static method to get the generic song of a bird
+    public static function getSong() {
+        return static::$song; // Late static binding to allow overriding in subclasses
     }
 
     // Method to check if the bird can fly using ternary operator
@@ -34,7 +39,9 @@ class YellowBelliedFlyCatcher extends Bird {
     // Public properties specific to YellowBelliedFlyCatcher
     public $name = "yellow-bellied flycatcher";
     public $diet = "mostly insects.";
-    public $song = "flat chilk";
+    
+    // Override static song property
+    protected static $song = "flat chilk";
     
     // Static property to override eggNum for YellowBelliedFlyCatcher
     public static $eggNum = "3-4, sometimes 5";
