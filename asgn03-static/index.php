@@ -6,11 +6,11 @@
         <title>asgn03 Static Methods and Properties</title>
     </head>
     <body>
-    <h1>Inheritance Examples</h1>
 
     <?php 
         include 'Bird.php';
 
+        echo "<h1>Static Examples</h1>";
         // Display instance counts before using create() method
         echo '<p>Bird instance count before: ' . Bird::$instanceCount . '</p>';
         echo '<p>Yellow-bellied Flycatcher instance count before: ' . YellowBelliedFlyCatcher::$instanceCount . '</p>';
@@ -26,6 +26,8 @@
         echo '<p>Yellow-bellied Flycatcher instance count after: ' . YellowBelliedFlyCatcher::$instanceCount . '</p>';
         echo '<p>Kiwi instance count after: ' . Kiwi::$instanceCount . '</p>';
 
+        echo "<hr>";
+        echo "<h1>Inheritance Examples</h1>";
         // Display the generic bird song using static method from Bird class
         echo '<p>The generic song of any bird is "' . Bird::getSong() . '".</p>';
 
