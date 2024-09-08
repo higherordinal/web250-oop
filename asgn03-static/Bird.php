@@ -13,14 +13,14 @@ class Bird {
     protected static $song = "chirp"; // Static property for the generic bird song
 
     // Static properties for instance counting
-    public static $instanceCount = 0;
+    public static $instanceCount = 0; // Shared across all subclasses
     public static $eggNum = 0; // Default egg number for birds
 
     // Static method to create a new instance of Bird using late static binding
     public static function create() {
         $className = get_called_class(); // Retrieve the name of the calling class
         $obj = new $className; // Create a new instance of the calling class
-        self::$instanceCount++; // Increment the instance count
+        Bird::$instanceCount++; // Always increment the Bird class instance count
         return $obj; // Return the created instance
     }
 
@@ -41,7 +41,7 @@ class YellowBelliedFlyCatcher extends Bird {
     public $diet = "mostly insects.";
     
     // Override static song property
-    protected static $song = "flat chilk";
+    protected static $song = "flat chilk"; // Specific song for YellowBelliedFlyCatcher
     
     // Static property to override eggNum for YellowBelliedFlyCatcher
     public static $eggNum = "3-4, sometimes 5";

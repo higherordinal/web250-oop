@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>asgn02 Inheritance</title>
+        <title>asgn03 Static Methods and Properties</title>
     </head>
     <body>
     <h1>Inheritance Examples</h1>
@@ -16,7 +16,8 @@
         echo '<p>Yellow-bellied Flycatcher instance count before: ' . YellowBelliedFlyCatcher::$instanceCount . '</p>';
         echo '<p>Kiwi instance count before: ' . Kiwi::$instanceCount . '</p>';
 
-        // Creating instances of Bird for Flycatcher and Kiwi using the create() method
+        // Creating instances of Bird for FlyCatcher and Kiwi using the create() method
+        $genericBird = Bird::create();
         $flyCatcher = YellowBelliedFlyCatcher::create();
         $kiwi = Kiwi::create();
 
