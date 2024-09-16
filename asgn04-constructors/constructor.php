@@ -12,12 +12,12 @@ class Bird {
 
 }
 
-$birdOne = new Bird('Acadian Flycatcher','Empidonax virescens');
+$birdOne = new Bird('American Robin','Turdus migratorius');
 echo 'Common name: ' . $birdOne->commonName . '<br>';
 echo 'Latin name: ' . $birdOne->latinName . '<br>';
 echo '<hr>';
 
-$birdTwo = new Bird('Carolina Wren', 'Thyrothorus ludovicianus');
+$birdTwo = new Bird('Eastern Towhee', 'Pipilo erythrophthalmus');
 echo 'Common name: ' . $birdTwo->commonName . '<br>';
 echo 'Latin name: ' . $birdTwo->latinName . '<br>';
 echo '<br>';
