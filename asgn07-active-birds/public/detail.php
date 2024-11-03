@@ -1,7 +1,20 @@
 <?php require_once('../private/initialize.php'); ?>
 
+<?php
+
+  $id = $_GET['id'] ?? false;
+
+  if(!$id) {
+    redirect_to('birds.php');
+  }
+
+  $bird = Bird::find_by_id($id);
+
+?>
+
 <?php $page_title = 'Detail: ' . $bird->name(); ?>
 <?php include(SHARED_PATH . '/public_header.php'); ?>
+
 
 <div id="main">
 

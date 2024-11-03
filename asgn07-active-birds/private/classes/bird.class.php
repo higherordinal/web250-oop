@@ -9,6 +9,49 @@ class Bird
     self::$database = $database;
   }
 
+  static public function find_by_sql($sql) {
+    $result = self::$database->query($sql);
+    if(!$result) {
+      exit("Database query failed.");
+    }
+
+    $object_array = [];
+    while($record = $result->fetch_assoc()) {
+      $object_array[] = self::instantiate($record);
+    }
+
+    $result->free();
+
+    return $object_array;
+  }
+
+  static public function find_all() {
+    $sql = "SELECT * FROM birds";
+    return self::find_by_sql($sql);
+  }
+
+  static protected function instantiate($record) {
+    $object = new self;
+    foreach($record as $property => $value) {
+      if(property_exists($object, $property)) {
+        $object->$property = $value;
+      }
+    }
+    return $object;
+  }
+
+  static public function find_by_id($id) {
+    $sql = "SELECT * FROM birds ";
+    $sql .= "WHERE id='" . self::$database->escape_string($id) . "'";
+    $obj_array = self::find_by_sql($sql);
+    if(!empty($obj_array)) {
+      return array_shift($obj_array);
+    } else {
+      return false;
+    }
+  }
+
+  public $id;
   public $common_name;
   public $habitat;
   public $food;
@@ -26,6 +69,7 @@ class Bird
 
   public function __construct($args = [])
   {
+    $this->id = $args['id'] ?? null;
     $this->common_name = $args['common_name'] ?? '';
     $this->habitat = $args['habitat'] ?? '';
     $this->food = $args['food'] ?? '';
@@ -33,6 +77,9 @@ class Bird
     $this->backyard_tips = $args['backyard_tips'] ?? '';
   }
 
+  public function name() {
+    return "{$this->common_name}";
+  }
 
   public function conservation()
   {
