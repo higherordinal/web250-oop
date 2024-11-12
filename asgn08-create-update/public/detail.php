@@ -11,7 +11,6 @@
   }
 
   // Find bird using ID
-
   $bird = Bird::find_by_id($id);
   
 
@@ -20,7 +19,7 @@
 <?php $page_title = 'Detail: ' . $bird->name(); ?>
 <?php include(SHARED_PATH . '/public_header.php'); ?>
 
-  <a href="active-record/index.php">Back to Inventory</a>
+  <a href="birds.php">Back to Inventory</a>
 
       <dl>
         <dt>ID</dt>
