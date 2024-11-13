@@ -30,14 +30,12 @@ class Bird extends DatabaseObject
     $this->habitat = $args['habitat'] ?? '';
     $this->food = $args['food'] ?? '';
     $this->conservation_id = $args['conservation_id'] ?? '';
-    // $this->conservation_id = $this->conservation($args['conservation_id'] ?? '');
     $this->backyard_tips = $args['backyard_tips'] ?? '';
   }
 
   public function name() {
     return "{$this->common_name}";
   }
-
 
   public function conservation()
   {
@@ -46,17 +44,5 @@ class Bird extends DatabaseObject
     } else {
       return "Unknown";
     }
-  }
-
-
-  protected function validate()
-  {
-    $this->errors = [];
-
-    if (is_blank($this->common_name)) {
-      $this->errors[] = "Bird name cannot be blank.";
-    }
-
-    return $this->errors;
   }
 }

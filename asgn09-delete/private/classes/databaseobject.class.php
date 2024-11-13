@@ -56,11 +56,21 @@ class DatabaseObject {
     return $object;
   }
 
-  protected function validate() {
+  protected function validate()
+  {
     $this->errors = [];
 
-    // Add custom validations
+    if (is_blank($this->common_name)) {
+      $this->errors[] = "Bird name cannot be blank.";
+    }
 
+    if (is_blank($this->habitat)) {
+      $this->errors[] = "Habitat cannot be blank.";
+    }
+
+    if (is_blank($this->food)) {
+      $this->errors[] = "Food cannot be blank.";
+    }
     return $this->errors;
   }
 
@@ -148,7 +158,6 @@ class DatabaseObject {
     // but, for example, we can't call $user->update() after
     // calling $user->delete().
   }
-
 }
 
 ?>

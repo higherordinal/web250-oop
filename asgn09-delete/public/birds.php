@@ -37,7 +37,6 @@ $birds = Bird::find_all();
         <td><a href="detail.php?id=<?php echo $bird->id; ?>">View</a></td>
         <td><a href="<?php echo url_for('/active-record/edit.php?id=' . h(u($bird->id))); ?>">Edit</a></td>
         <td><a href="<?php echo url_for('/active-record/delete.php?id=' . h(u($bird->id))); ?>">Delete</a></td>
-
       </tr>
       <?php } ?>
 
