@@ -46,8 +46,7 @@ class DatabaseObject {
 
   static protected function instantiate($record) {
     $object = new static;
-    // Could manually assign values to properties
-    // but automatically assignment is easier and re-usable
+  
     foreach($record as $property => $value) {
       if(property_exists($object, $property)) {
         $object->$property = $value;

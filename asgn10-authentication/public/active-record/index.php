@@ -1,47 +1,18 @@
-<?php 
-  require_once('../../private/initialize.php');
-  $page_title = 'Bird List';
-  include(SHARED_PATH . '/public_header.php');
-?>
+<?php require_once('../../private/initialize.php'); ?>
 
-<h2>Bird inventory</h2>
-<p>This is a short list -- start your birding!</p>
+<?php require_login(); ?>
 
-<p><a href="new.php">Add a Bird</a></p>
+<?php $page_title = 'Member Menu'; ?>
+<?php include(SHARED_PATH . '/public_header.php'); ?>
 
-    <table border="1">
-      <tr>
-        <th>Name</th>
-        <th>Habitat</th>
-        <th>Food</th>
-        <th>Conservation</th>
-        <th>Backyard Tips</th>
-        <th>&nbsp;</th>
-      </tr>
-
-<?php
-
-// Create a new bird object that uses the find_all() method
-$birds = Bird::find_all();
-
-
-  foreach($birds as $bird) { 
-
-  ?>
-      <tr>
-        <td><?php echo h($bird->common_name); ?></td>
-        <td><?php echo h($bird->habitat); ?></td>
-        <td><?php echo h($bird->food); ?></td>
-        <td><?php echo h($bird->conservation()); ?></td>
-        <td><?php echo h($bird->backyard_tips); ?></td>
-        <td><a href="../detail.php?id=<?php echo $bird->id; ?>">View</a></td>
-        <td><a href="edit.php?id=<?php echo $bird->id; ?>">Edit</a></td>
-        <td><a href="<?php echo url_for('active-record/delete.php?id=' . h(u($bird->id))); ?>">Delete</a></td>
-
-      </tr>
-      <?php } ?>
-
-    </table>
-
+<div id="content">
+  <div id="main-menu">
+    <h2>Main Menu</h2>
+    <ul>
+      <li><a href="<?php echo url_for('/index.php'); ?>">Birds</a></li>
+      <li><a href="<?php echo url_for('/active-record/members/index.php'); ?>">Members</a></li>
+    </ul>
+  </div>
+</div>
 
 <?php include(SHARED_PATH . '/public_footer.php'); ?>

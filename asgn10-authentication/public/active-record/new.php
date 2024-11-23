@@ -2,11 +2,7 @@
 
 require_once('../../private/initialize.php');
 
-/* 
-  Use the bicycles/staff/new.php file as a guide 
-  so your file mimics the same functionality.
-  Be sure to include the display_errors() function.
-*/
+require_login();
 
 if(is_post_request()) {
 
@@ -31,7 +27,7 @@ if(is_post_request()) {
 ?>
 
 <?php $page_title = 'Create Bird'; ?>
-<?php include(SHARED_PATH . '/public_header.php'); ?>
+<?php include(SHARED_PATH . '/member_header.php'); ?>
 
 <div id="content">
 

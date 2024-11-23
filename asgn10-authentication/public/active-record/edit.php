@@ -35,7 +35,7 @@ if(is_post_request()) {
 ?>
 
 <?php $page_title = 'Edit Bird'; ?>
-<?php include(SHARED_PATH . '/public_header.php'); ?>
+<?php include(SHARED_PATH . '/member_header.php'); ?>
 
 <div id="content">
 

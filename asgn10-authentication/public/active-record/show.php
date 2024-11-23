@@ -1,4 +1,5 @@
 <?php require_once('../../private/initialize.php'); ?>
+<?php require_login(); ?>
 
 <?php
 
@@ -9,7 +10,7 @@ $bird = Bird::find_by_id($id);
 ?>
 
 <?php $page_title = 'Show Bird: ' . h($bird->name()); ?>
-<?php include(SHARED_PATH . '/public_header.php'); ?>
+<?php include(SHARED_PATH . '/member_header.php'); ?>
 
 <div id="content">
 

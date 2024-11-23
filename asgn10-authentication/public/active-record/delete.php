@@ -2,6 +2,8 @@
 
 require_once('../../private/initialize.php');
 
+require_login();
+
 if(!isset($_GET['id'])) {
   redirect_to(url_for('/active-record/index.php'));
 }
@@ -25,7 +27,7 @@ if(is_post_request()) {
 ?>
 
 <?php $page_title = 'Delete Bird'; ?>
-<?php include(SHARED_PATH . '/public_header.php'); ?>
+<?php include(SHARED_PATH . '/member_header.php'); ?>
 
 <div id="content">
 
