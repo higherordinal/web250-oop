@@ -1,21 +1,9 @@
 <?php 
-
-require_once('../private/initialize.php'); 
-
-if($session->is_logged_in()) {
+  require_once('../../private/initialize.php');
+  require_login();
+  $page_title = 'Bird List';
   include(SHARED_PATH . '/member_header.php');
-} else {
-  include(SHARED_PATH . '/public_header.php');
-}
-
 ?>
-
-<ul>
-  <?php if ($session->is_admin_logged_in()) { ?>
-    <li><a href="<?php echo url_for('members/index.php'); ?>">View Members</a></li>
-  <?php } ?>
-  <li><a href="<?php echo url_for('birds/about.php'); ?>">About Us</a></li>  
-</ul>  
 
 <h2>Bird inventory</h2>
 <p>This is a short list -- start your birding!</p>
@@ -62,6 +50,7 @@ if($session->is_logged_in()) {
           <?php } ?>
         </tr>
         <?php } ?>
-</table>
+
+      </table>
 
 <?php include(SHARED_PATH . '/public_footer.php'); ?>

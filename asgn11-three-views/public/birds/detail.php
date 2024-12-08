@@ -1,4 +1,4 @@
-<?php require_once('../private/initialize.php'); ?>
+<?php require_once('../../private/initialize.php'); ?>
 
 <?php
 
@@ -7,7 +7,7 @@
   $id = $_GET['id'] ?? false;
 
   if(!$id) {
-    redirect_to('birds.php');
+    redirect_to('/public/index.php');
   }
 
   // Find bird using ID
@@ -19,7 +19,7 @@
 <?php $page_title = 'Detail: ' . $bird->name(); ?>
 <?php include(SHARED_PATH . '/public_header.php'); ?>
 
-  <a href="birds.php">Back to Inventory</a>
+<a href="birds.php">Back to List</a>
 
       <dl>
         <dt>ID</dt>

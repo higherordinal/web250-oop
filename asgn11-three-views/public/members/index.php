@@ -1,5 +1,5 @@
 <?php 
-  require_once('../../../private/initialize.php');
+  require_once('../../private/initialize.php');
   require_login();
 ?>
 
@@ -13,7 +13,7 @@
     <h1>Members</h1>
 
     <div class="actions">
-      <a class="action" href="<?php echo url_for('/active-record/members/new.php');
+      <a class="action" href="<?php echo url_for('/members/new.php');
       ?>">Add Member</a>
     </div>
 
@@ -24,6 +24,7 @@
         <th>Last name</th>
         <th>Email</th>
         <th>Username</th>
+        <th>User Level</th>
         <th>&nbsp;</th>
         <th>&nbsp;</th>
         <th>&nbsp;</th>
@@ -42,11 +43,12 @@ foreach($members as $member) {
         <td><?php echo h($member->last_name); ?></td>
         <td><?php echo h($member->email); ?></td>
         <td><?php echo h($member->username); ?></td>
-        <td><a class="action" href="<?php echo url_for('/active-record/members/show.php?id=' . h(u($member->id)));
+        <td><?php echo h($member->user_level); ?></td>
+        <td><a class="action" href="<?php echo url_for('/members/show.php?id=' . h(u($member->id)));
         ?>">View</a></td>
-        <td><a class="action" href="<?php echo url_for('/active-record/members/edit.php?id=' . h(u($member->id)));
+        <td><a class="action" href="<?php echo url_for('/members/edit.php?id=' . h(u($member->id)));
         ?>">Edit</a></td>
-        <td><a class="action" href="<?php echo url_for('/active-record/members/delete.php?id=' . h(u($member->id)));
+        <td><a class="action" href="<?php echo url_for('/members/delete.php?id=' . h(u($member->id)));
         ?>">Delete</a></td>
       </tr>
       <?php } ?>

@@ -2,7 +2,7 @@
 // prevents this code from being loaded directly in the browser
 // or without first setting the necessary object
 if(!isset($member)) {
-  redirect_to(url_for('/active-record/members/index.php'));
+  redirect_to(url_for('/members/index.php'));
 }
 ?>
 
@@ -35,3 +35,15 @@ if(!isset($member)) {
   <dt>Confirm password</dt>
   <dd><input type="password" name="member[confirm_password]" value="" /></dd>
 </dl>
+
+<?php if ($session->is_admin_logged_in()): ?>
+<dl>
+  <dt>User Level</dt>
+  <dd>
+    <select name="member[user_level]">
+      <option value="a" <?php if ($member->user_level === 'a') echo 'selected'; ?>>Admin (a)</option>
+      <option value="m" <?php if ($member->user_level === 'm') echo 'selected'; ?>>Member (m)</option>
+    </select>
+  </dd>
+</dl>
+<?php endif; ?>

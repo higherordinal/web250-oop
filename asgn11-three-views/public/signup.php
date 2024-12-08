@@ -1,8 +1,6 @@
 <?php
 
-require_once('../../../private/initialize.php');
-
-require_login();
+require_once('../private/initialize.php');
 
 if(is_post_request()) {
 
@@ -14,8 +12,9 @@ if(is_post_request()) {
 
   if($result === true) {
     $new_id = $member->id;
-    $_SESSION['message'] = 'The user was created successfully.';
-    redirect_to(url_for('/active-record/members/show.php?id=' . $new_id));
+    $session->message(`You've signed up successfully.`);
+    $session->login($member);
+    redirect_to(url_for('/members/show.php?id=' . $new_id));
   } else {
     // show errors
   }
@@ -27,26 +26,22 @@ if(is_post_request()) {
 
 ?>
 
-<?php $page_title = 'Create User'; ?>
+<?php $page_title = 'Sign Up for Membership'; ?>
 <?php include(SHARED_PATH . '/member_header.php'); ?>
 
 <div id="content">
 
-  <a class="back-link" href="<?php echo url_for('/active-record/members/index.php'); ?>">&laquo; Back to List</a>
+  <a class="back-link" href="<?php echo url_for('index.php'); ?>">&laquo; Back to List</a>
 
   <div class="member new">
     <h1>Create User</h1>
 
     <?php echo display_errors($member->errors); ?>
 
-    <form action="<?php echo url_for('/active-record/members/new.php'); ?>" method="post">
-
-      <?php 
-        include('form_fields.php'); 
-      ?>
-
+    <form action="<?php echo url_for('signup.php'); ?>" method="post">
+      <?php  include('members/form_fields.php'); ?>
       <div id="operations">
-        <input type="submit" value="Create User">
+        <input type="submit" value="Sign Up">
       </div>
     </form>
 
