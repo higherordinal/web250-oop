@@ -19,7 +19,7 @@
 <?php $page_title = 'Detail: ' . $bird->name(); ?>
 <?php include(SHARED_PATH . '/public_header.php'); ?>
 
-<a href="birds.php">Back to List</a>
+<a href="<?php echo url_for('/index.php'); ?>">Back to List</a>
 
       <dl>
         <dt>ID</dt>
